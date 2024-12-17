@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculate Interest</h1>
+    <h4>Start Date</h4>
+    <input type="date" id="startDate">
+    <h4>End Date</h4>
+    <input type="date" id="endDate">
+    <h4>Money</h4>
+    <input type="number" id="money" placeholder="money">
+    <h4>Interest</h4>
+    <input type="number" id="interest" placeholder="SI">
+    <select id="Select Interest">
+        <option value="simpleInterest">Simple Interest</option>
+        <option value="compoundInterest">Compound Interest</option>
+    </select>
+    <br>
+
+
+    <button onclick="calculateInterest()">Calculate Interest</button>
+    <div id="result"></div>
+    
+    <script>
+        function calculateInterest(){
+            const inputDate = document.getElementById('startDate').value;
+            const inputDate2 = document.getElementById('endDate').value;
+
+            const cost = parseFloat(document.getElementById("money").value);
+            const Interest = parseFloat(document.getElementById("interest").value);
+
+            const selected_value=document.getElementById('Select Interest').value;
+            console.log(selected_value);
+
+            const date1 = new Date(inputDate);
+            const date2 = new Date(inputDate2);
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            console.log(diffDays);
+             
+
+            if (selected_value==='simpleInterest'){
+                let principal=cost;
+                const days_interest=(principal*Interest*diffDays)/(100*30);
+                finalvalue=principal+days_interest; 
+                
+            }
+
+            if (selected_value==='compoundInterest'){
+                let principal=cost;
+                console.log(principal);
+                const years=Math.floor(diffDays/365);
+                console.log(years);
+                const remaining_days=diffDays%365;
+                console.log(remaining_days);
+                for (let i = 0; i < years; i++){
+                    one_year_Interest=(principal*Interest*12)/100;
+                    principal+=one_year_Interest;
+                    console.log(principal);
+                }
+                
+                const days_interest=(principal*Interest*remaining_days)/(100*30);
+                finalvalue=principal+days_interest;            
+            }
+
+
+            document.getElementById("result").innerHTML='TOTAL MONEY:  '+finalvalue;
+
+        
+        }
+
+    </script>
+
+</body>
+</html>
