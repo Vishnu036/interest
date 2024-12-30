@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>body {
+        background-image: url(img.jpeg);
+        background-repeat: :no-repeat;
+        background-attachment:fixed;
+        background-size:100% 100%;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+    button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 1em;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #333;
+    }
+    </style>
 </head>
 <body>
     <h1>Calculate Interest</h1>
@@ -62,9 +82,15 @@
                     principal+=one_year_Interest;
                     console.log(principal);
                 }
-                
+
+                const months=Math.floor(remaining_days/30);
+                console.log(months);
+                const days=remaining_days%30;
+                console.log(remaining_days);
+
+                const months_interest=(principal*Interest*months)/100;
                 const days_interest=(principal*Interest*remaining_days)/(100*30);
-                finalvalue=principal+days_interest;            
+                finalvalue=principal+days_interest+months_interest;            
             }
 
 
