@@ -43,7 +43,7 @@
 
 
     <button onclick="calculateInterest()">Calculate Interest</button>
-    <div id="result"></div>
+    <p id="result" style="color:blue;"></p>
     
     <script>
         function calculateInterest(){
@@ -94,7 +94,9 @@
             }
 
 
-            document.getElementById("result").innerHTML='TOTAL MONEY:  '+finalvalue;
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML='Total Amount: '+finalvalue;
+            resultElement.style.color = "blue";
 
         
         }
